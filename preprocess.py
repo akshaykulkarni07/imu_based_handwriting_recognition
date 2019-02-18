@@ -5,12 +5,12 @@ path = '/mnt/c/Users/Kulkarni/Work/imu_based_handwriting_recognition/data/'
 # Required constant length
 reqd_len = 300
 # Letter whose data is being pre-processed.
-letter = 'b'
+letter = 'd'
 # Values to be used as padding. These values are obtained by
 # holding the pen stationary and taking an average of those readings.
 padding_values = [10000, 0.092, -0.041, -0.028, 11.265, 2.235, 9.82, letter]
 
-with open(path + 'b_letter.csv', 'rb') as f :
+with open(path + 'd_letter.csv', 'rb') as f :
     # reader object to read the csv file
     reader = csv.reader(f)
     # an empty list that will contain readings from one sample only
@@ -34,9 +34,11 @@ with open(path + 'b_letter.csv', 'rb') as f :
             pad_length = (reqd_len - length) // 2
             if ((pad_length * 2) + length) < 300 : 
                 k = 1
+            
+            print(length + pad_length + pad_length + k)
 
             # writing the padding and data to csv file
-            with open('final_data/b.csv', 'ab') as wf :
+            with open('final_data/d.csv', 'ab') as wf :
                 wrf = csv.writer(wf)
                 for i in range(pad_length) :
                     wrf.writerow(padding_values)
